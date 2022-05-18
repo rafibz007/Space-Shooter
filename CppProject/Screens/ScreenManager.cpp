@@ -34,3 +34,9 @@ void ScreenManager::showEndGame(int finalScore) {
     currentScreenEnum = ScreenEnum::END;
     currentScreen = new EndGameScreen(finalScore);
 }
+
+Game *ScreenManager::getGame() {
+    if (currentScreenEnum == ScreenEnum::GAME)
+        return (Game*)currentScreen;
+    return nullptr;
+}

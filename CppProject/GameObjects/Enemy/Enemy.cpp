@@ -3,3 +3,12 @@
 //
 
 #include "Enemy.h"
+
+
+void Enemy::Update() {
+//todo
+}
+
+void Enemy::Draw() {
+//todo
+}

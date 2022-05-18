@@ -6,7 +6,14 @@
 #define CPPPROJECT_ENEMY_H
 
 
-class Enemy {
+#include "../GameObject.h"
+
+class Enemy: public GameObject {
+public:
+    Enemy() = default;
+
+    void Update() override;
+    void Draw() override;
 
 };
 

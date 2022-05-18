@@ -39,6 +39,8 @@ public:
         currentScreen->Draw();
     }
 
+    Game* getGame();
+
     void showGame();
     void showMenu();
     void showEndGame(int finalScore=0);

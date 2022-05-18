@@ -36,7 +36,7 @@ public:
 private:
     int score;
     const char* END_GAME = "GAME OVER";
-    const char* START_INSTRUCTION = "PRESS [SPACE] TO START";
+    const char* START_INSTRUCTION = "PRESS [SPACE] TO RETURN BACK TO MENU";
 };
 
 
