@@ -36,7 +36,7 @@ private:
     static const float SHOT_DELAY;
     static const float DYING_TIME;
     float dyingTime{0};
-    float secondsSincePrevShot;
+    float secondsSincePrevShot{0};
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
 };
 

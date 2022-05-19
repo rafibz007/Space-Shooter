@@ -11,13 +11,22 @@
 
 int EnemySpawner::MAX_ENEMIES_AMOUNT = 20;
 float EnemySpawner::SPAWN_DELAY = 1;
-float EnemySpawner::MAX_SPAWN_DELAY = 2;
+float EnemySpawner::MAX_SPAWN_DELAY = 1.5;
 float EnemySpawner::MIN_SPAWN_DELAY = 0.5;
 
 void EnemySpawner::Update() {
     timeSincePrevSpawn += GetFrameTime();
     if (timeSincePrevSpawn >= SPAWN_DELAY && enemiesAmount < MAX_ENEMIES_AMOUNT){
         spawnEnemy();
+
+//        modify next spawn time
+        std::random_device rd; // obtain a random number from hardware
+        std::mt19937 gen(rd()); // seed the generator
+        std::uniform_int_distribution<> distr(-5, 5); // define the range
+
+        SPAWN_DELAY += (float)distr(gen)/10;
+        SPAWN_DELAY = std::min(SPAWN_DELAY, MAX_SPAWN_DELAY);
+        SPAWN_DELAY = std::max(SPAWN_DELAY, MIN_SPAWN_DELAY);
     }
 }
 
