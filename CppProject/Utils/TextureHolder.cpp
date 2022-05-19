@@ -19,6 +19,11 @@ Texture2D* TextureHolder::getTexture(TextureEnum::ENUM textureEnum) {
     if (searchedTexture == toTextureMap.end()){
         Image image = LoadImage(TextureEnum::toString(textureEnum)); // Load image in CPU memory (RAM)
 
+        Vector2 size = TextureEnum::toSize(textureEnum);
+        if (size.x > 0 && size.y > 0) {
+            ImageResize(&image, size.x, size.y);
+        }
+
         *texture = LoadTextureFromImage(image);  // Image converted to textureEnum, uploaded to GPU memory (VRAM)
         UnloadImage(image);
 

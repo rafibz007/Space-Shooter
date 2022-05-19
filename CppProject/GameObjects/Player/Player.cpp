@@ -9,7 +9,7 @@
 float const Player::VERTICAL_SPEED = 500;
 float const Player::HORIZONTAL_SPEED = 450;
 float const Player::HITBOX_HEIGHT = 50;
-float const Player::HITBOX_WIDTH = 75;
+float const Player::HITBOX_WIDTH = 60;
 float const Player::SHOT_DELAY = 0.5;
 float const Player::DYING_TIME = 1;
 
@@ -69,8 +69,15 @@ void Player::die() {
 }
 
 void Player::Draw() {
-    if (!_isDying)
-        DrawRectangle(x, y, width, height, GREEN);
+    if (!_isDying){
+        float xDiff = textureSize.x - HITBOX_WIDTH;
+        float yDiff = textureSize.y - HITBOX_HEIGHT;
+
+//        DrawRectangle(x, y, width, height, PINK);
+        DrawTexture(*texture, x-xDiff/2, y-yDiff/2, WHITE);
+    }
     else
+    {
         DrawRectangle(x, y, width, height, PINK);
+    }
 }

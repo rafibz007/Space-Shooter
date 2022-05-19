@@ -8,8 +8,8 @@
 
 const float Enemy::DYING_TIME = 0.2;
 const float Enemy::SHOT_DELAY = 1;
-const float Enemy::HITBOX_HEIGHT = 60;
-const float Enemy::HITBOX_WIDTH = 90;
+const float Enemy::HITBOX_HEIGHT = 70;
+const float Enemy::HITBOX_WIDTH = 60;
 
 void Enemy::Update() {
     if (!_isDying){

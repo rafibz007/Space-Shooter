@@ -6,6 +6,7 @@
 #define CPPPROJECT_TEXTUREENUM_H
 
 #include <string>
+#include <raylib.h>
 
 class TextureEnum {
 protected:
@@ -20,6 +21,7 @@ public:
     };
 
     static const char* toString(ENUM anEnum);
+    static Vector2 toSize(ENUM anEnum);
 };
 
 

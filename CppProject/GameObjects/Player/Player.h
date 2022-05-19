@@ -47,6 +47,8 @@ private:
 private:
     TextureHolder* textureHolder{TextureHolder::GetInstance()};
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
+    Texture2D* texture{textureHolder->getTexture(TextureEnum::PLAYER_SHIP)};
+    Vector2 textureSize{TextureEnum::toSize(TextureEnum::PLAYER_SHIP)};
     int lives;
     static const float VERTICAL_SPEED;
     static const float HORIZONTAL_SPEED;
