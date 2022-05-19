@@ -49,6 +49,8 @@ private:
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
     Texture2D* texture{textureHolder->getTexture(TextureEnum::PLAYER_SHIP)};
     Vector2 textureSize{TextureEnum::toSize(TextureEnum::PLAYER_SHIP)};
+    Texture2D* explosionTexture{textureHolder->getTexture(TextureEnum::EXPLOSION)};
+    Vector2 explosionTextureSize{TextureEnum::toSize(TextureEnum::EXPLOSION)};
     int lives;
     static const float VERTICAL_SPEED;
     static const float HORIZONTAL_SPEED;
@@ -57,6 +59,7 @@ private:
     static const float HITBOX_WIDTH;
     static const float HITBOX_HEIGHT;
     static const float DYING_TIME;
+    static const int EXPLOSION_FRAMES;
     float dyingTime{0};
 };
 

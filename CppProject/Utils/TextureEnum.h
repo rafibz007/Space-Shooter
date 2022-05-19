@@ -19,6 +19,7 @@ public:
         BACKGROUND,
         PLAYER_BULLET,
         ENEMY_BULLET,
+        EXPLOSION
     };
 
     static const char* toString(ENUM anEnum);
