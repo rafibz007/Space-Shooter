@@ -31,39 +31,7 @@ public:
         return lives;
     }
 
-    void Update() override {
-//        MOVE PLAYER
-        if (IsKeyDown(KEY_W))
-            y -= VERTICAL_SPEED * GetFrameTime();
-
-        if (IsKeyDown(KEY_S))
-            y += VERTICAL_SPEED * GetFrameTime();
-
-        if (IsKeyDown(KEY_A))
-            x -= HORIZONTAL_SPEED * GetFrameTime();
-
-        if (IsKeyDown(KEY_D))
-            x += HORIZONTAL_SPEED * GetFrameTime();
-
-//        PREVENT GOING OUT OF SCREEN
-        if (x<0)
-            x = 0;
-        else if (x+width>GetScreenWidth())
-            x=GetScreenWidth()-width;
-
-        if (y<0)
-            y = 0;
-        else if (y+height>GetScreenHeight())
-            y=GetScreenHeight()-height;
-
-//        SHOOT IF SPACE PRESSED
-        secondsSincePrevShot = std::min(secondsSincePrevShot + GetFrameTime(), SHOT_DELAY);
-        if (secondsSincePrevShot >= SHOT_DELAY && IsKeyDown(KEY_SPACE)){
-            secondsSincePrevShot = 0;
-            shot();
-        }
-
-    };
+    void Update() override;
 
     void Draw() override {
         DrawRectangle(x, y, width, height, GREEN);

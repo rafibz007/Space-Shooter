@@ -15,14 +15,13 @@ int main()
     screenManager->showMenu();
 
 //    MAIN GAME LOOP
-
     while (!WindowShouldClose())
     {
 //        CHANGE STATE
         // when game will end, Game class will switch game manager by itself
-        if (screenManager->getScreenEnum() == ScreenManager::MENU && IsKeyReleased(KEY_SPACE)){ // is in menu and press space to start game
+        if (screenManager->getScreenEnum() == ScreenManager::MENU && IsKeyReleased(KEY_ENTER)){ // is in menu and press enter to start game
             screenManager->showGame();
-        } else if (screenManager->getScreenEnum() == ScreenManager::END && IsKeyReleased(KEY_SPACE)) { // ended game and press space to go back to menu
+        } else if (screenManager->getScreenEnum() == ScreenManager::END && IsKeyReleased(KEY_ENTER)) { // ended game and press enter to go back to menu
             screenManager->showMenu();
         }
 

@@ -14,11 +14,12 @@ public:
     virtual void Update() = 0;
     virtual void Draw() = 0;
 
+
 protected:
     double x;
     double y;
-    double width;
     double height;
+    double width;
 };
 
 

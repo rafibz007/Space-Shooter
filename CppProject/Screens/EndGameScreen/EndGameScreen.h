@@ -22,21 +22,13 @@ public:
         Screen::Update();
     };
 
-    void Draw() override {
-        Screen::Draw();
-
-        const char* SCORE_MESSAGE = TextFormat("YOUR SCORE: %d", score);
-
-        DrawText(END_GAME, (GetScreenWidth()-MeasureText(END_GAME, 100))/2, GetScreenHeight()/6, 100, GOLD);
-        DrawText(SCORE_MESSAGE, (GetScreenWidth()-MeasureText(SCORE_MESSAGE, 50))/2, GetScreenHeight()/6+200, 50, GOLD);
-        DrawText(START_INSTRUCTION, (GetScreenWidth()-MeasureText(START_INSTRUCTION, 30))/2, GetScreenHeight()/6+450, 30, GOLD);
-    };
+    void Draw() override;
 
 
 private:
     int score;
     const char* END_GAME = "GAME OVER";
-    const char* START_INSTRUCTION = "PRESS [SPACE] TO RETURN BACK TO MENU";
+    const char* START_INSTRUCTION = "PRESS [ENTER] TO RETURN BACK TO MENU";
 };
 
 
