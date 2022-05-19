@@ -15,8 +15,10 @@ float const Player::SHOT_DELAY = 0.5;
 void Player::shot() {
     auto* bullet = new Bullet(x+width, y+height/2-Bullet::HITBOX_HEIGHT, true);
     Game* game = ScreenManager::GetInstance()->getGame();
-    if (game != nullptr)
+    if (game != nullptr) {
         game->addBullet(bullet);
+        musicPlayer->playSound(SoundEnum::PLAYER_SHOOT);
+    }
 }
 
 void Player::Update() {

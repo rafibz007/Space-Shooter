@@ -21,14 +21,14 @@ protected:
 public:
     TextureHolder(TextureHolder&) = delete;
     void operator=(const TextureHolder&) = delete;
-    void operator=(const TextureHolder&&) = delete;
+    void operator=(TextureHolder&&) = delete;
 
     static TextureHolder* GetInstance();
 
     Texture2D* getTexture(TextureEnum::ENUM);
 
 private:
-    std::map<TextureEnum::ENUM, Texture2D*> toTextureMap;
+    std::map<TextureEnum::ENUM, Texture2D*> toTextureMap{};
 };
 
 

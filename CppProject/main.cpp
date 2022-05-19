@@ -8,6 +8,8 @@ int main()
 {
 //    INITIALIZATION
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "CapitanBombardiero");
+    InitAudioDevice();
+    SetMasterVolume(100);
 
     SetTargetFPS(60);
 
@@ -40,6 +42,9 @@ int main()
 
 
 //    CLEAN UP
+    StopSoundMulti();
+
+    CloseAudioDevice();
     CloseWindow();
 
     return 0;

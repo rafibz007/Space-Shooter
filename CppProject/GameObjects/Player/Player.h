@@ -10,6 +10,8 @@
 #include <iostream>
 #include "../GameObject.h"
 #include "../Bullet/Bullet.h"
+#include "../../Utils/TextureHolder.h"
+#include "../../Utils/MusicPlayer.h"
 
 
 class Player: public GameObject {
@@ -42,6 +44,8 @@ private:
 
 
 private:
+    TextureHolder* textureHolder{TextureHolder::GetInstance()};
+    MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
     int lives;
     static const float VERTICAL_SPEED;
     static const float HORIZONTAL_SPEED;
