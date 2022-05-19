@@ -8,6 +8,7 @@
 #include <raylib.h>
 #include "../GameObject.h"
 #include "Logics/EnemyLogic.h"
+#include "../../Utils/MusicPlayer.h"
 
 class Enemy: public GameObject {
 public:
@@ -21,6 +22,8 @@ public:
         return x+width<0;
     }
 
+    void die() override;
+
 private:
     void shot();
 
@@ -32,6 +35,7 @@ private:
     EnemyLogic enemyLogic;
     static const float SHOT_DELAY;
     float secondsSincePrevShot;
+    MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
 };
 
 

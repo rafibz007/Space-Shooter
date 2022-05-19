@@ -54,3 +54,8 @@ void Player::Update() {
     }
 
 }
+
+void Player::die() {
+    GameObject::die();
+//    musicPlayer->playSound(SoundEnum::PLAYER_EXPLOSION);
+}

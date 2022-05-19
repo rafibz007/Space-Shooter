@@ -23,6 +23,7 @@ public:
 
     void receiveDamage(){
         lives--;
+        musicPlayer->playSound(SoundEnum::PLAYER_HIT);
     }
 
     bool hasLives() const {
@@ -32,6 +33,8 @@ public:
     int getLives() const {
         return lives;
     }
+
+    void die() override;
 
     void Update() override;
 

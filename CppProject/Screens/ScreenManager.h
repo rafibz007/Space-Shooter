@@ -52,6 +52,7 @@ public:
 private:
     Screen* currentScreen;
     ScreenEnum currentScreenEnum;
+    MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
 };
 
 

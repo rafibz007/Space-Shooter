@@ -11,11 +11,11 @@ public:
     enum ENUM{
         PLAYER_HIT,
         PLAYER_SHOOT,
+        PLAYER_EXPLOSION,
         ENEMY_HIT,
         ENEMY_SHOOT,
         GAME_START,
         GAME_OVER,
-        BACKGROUND_MUSIC
     };
 
     static const char* toString(ENUM anEnum);

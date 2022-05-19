@@ -29,5 +29,11 @@ void Enemy::shot() {
     Game* game = ScreenManager::GetInstance()->getGame();
     if (game != nullptr){
         game->addBullet(bullet);
+        musicPlayer->playSound(SoundEnum::ENEMY_SHOOT);
     }
+}
+
+void Enemy::die() {
+    GameObject::die();
+    musicPlayer->playSound(SoundEnum::ENEMY_HIT);
 }
