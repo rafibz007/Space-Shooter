@@ -8,8 +8,8 @@
 
 const float Enemy::DYING_TIME = 0.2;
 const float Enemy::SHOT_DELAY = 1;
-const float Enemy::HITBOX_HEIGHT = 70;
-const float Enemy::HITBOX_WIDTH = 60;
+const float Enemy::HITBOX_HEIGHT = 60;
+const float Enemy::HITBOX_WIDTH = 50;
 
 void Enemy::Update() {
     if (!_isDying){
@@ -28,10 +28,15 @@ void Enemy::Update() {
 }
 
 void Enemy::Draw() {
-    if (!_isDying)
-        DrawRectangle(x, y, width, height, RED);
-    else
+    if (!_isDying){
+        float xDiff = textureSize.x - HITBOX_WIDTH;
+        float yDiff = textureSize.y - HITBOX_HEIGHT;
+
+//        DrawRectangle(x, y, width, height, RED);
+        DrawTexture(*texture, x-xDiff/2, y-yDiff/2, WHITE);
+    } else {
         DrawRectangle(x, y, width, height, BLUE);
+    }
 }
 
 void Enemy::shot() {

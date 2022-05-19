@@ -8,9 +8,10 @@
 const char* TextureEnum::toString(ENUM anEnum){
     switch (anEnum) {
         case PLAYER_SHIP: return "../Textures/player_ship.png";
-        case ENEMY_SHIP: return "";
+        case ENEMY_SHIP: return "../Textures/enemy_ship.png";
         case BACKGROUND: return "../Textures/bg_sky.png";
-        case BULLET: return "";
+        case PLAYER_BULLET: return "../Textures/player_shot.png";
+        case ENEMY_BULLET: return "../Textures/enemy_shot.png";
     }
     return "";
 }
@@ -18,6 +19,9 @@ const char* TextureEnum::toString(ENUM anEnum){
 Vector2 TextureEnum::toSize(TextureEnum::ENUM anEnum) {
     switch (anEnum) {
         case PLAYER_SHIP: return Vector2{80, 60};
-        default: return Vector2{-1,-1};
+        case ENEMY_SHIP: return Vector2{65, 75};
+        case PLAYER_BULLET: return Vector2{60, 15};
+        case ENEMY_BULLET: return Vector2{60, 15};
+        default: return Vector2{0,0};
     }
 }

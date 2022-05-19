@@ -9,6 +9,7 @@
 #include "../GameObject.h"
 #include "Logics/EnemyLogic.h"
 #include "../../Utils/MusicPlayer.h"
+#include "../../Utils/TextureHolder.h"
 
 class Enemy: public GameObject {
 public:
@@ -38,6 +39,9 @@ private:
     float dyingTime{0};
     float secondsSincePrevShot{0};
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
+    TextureHolder* textureHolder{TextureHolder::GetInstance()};
+    Texture2D* texture{textureHolder->getTexture(TextureEnum::ENEMY_SHIP)};
+    Vector2 textureSize{TextureEnum::toSize(TextureEnum::ENEMY_SHIP)};
 };
 
 

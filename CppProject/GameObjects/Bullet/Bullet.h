@@ -8,14 +8,12 @@
 
 #include <raylib.h>
 #include "../GameObject.h"
+#include "../../Utils/TextureHolder.h"
 
 class Bullet: public GameObject {
 public:
 
-    Bullet(float _x, float _y, bool _shotByPlayer, float _speedX=SPEED_X):
-        GameObject(_x, _y, HITBOX_WIDTH, HITBOX_HEIGHT, true),
-        shotByPlayer{_shotByPlayer},
-        speedX{_speedX}{}
+    Bullet(float _x, float _y, bool _shotByPlayer, float _speedX=SPEED_X);
 
     void Update() override;
     void Draw() override;
@@ -40,6 +38,9 @@ public:
     const static float HITBOX_HEIGHT;
     static const float DYING_TIME;
     float dyingTime{0};
+    TextureHolder* textureHolder{TextureHolder::GetInstance()};
+    Texture2D* texture{};
+    Vector2 textureSize{};
 };
 
 

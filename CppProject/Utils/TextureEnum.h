@@ -17,7 +17,8 @@ public:
         PLAYER_SHIP,
         ENEMY_SHIP,
         BACKGROUND,
-        BULLET,
+        PLAYER_BULLET,
+        ENEMY_BULLET,
     };
 
     static const char* toString(ENUM anEnum);
