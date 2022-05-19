@@ -3,3 +3,7 @@
 //
 
 #include "GameObject.h"
+
+bool GameObject::hasCollision(const GameObject &gameObject) {
+    return false;
+}

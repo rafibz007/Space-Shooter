@@ -3,6 +3,9 @@
 //
 
 #include "Game.h"
+#include "../ScreenManager.h"
+
+int Game::ENEMY_SCORE_VALUE = 100;
 
 void Game::startGame() {
 

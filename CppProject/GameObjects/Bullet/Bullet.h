@@ -21,7 +21,11 @@ public:
     void Draw() override;
 
     bool isOut(){
-        return x > GetScreenWidth();
+        return x > GetScreenWidth() || x+width < 0;
+    }
+
+    bool isPlayerBullet() const{
+        return shotByPlayer;
     }
 
 private:

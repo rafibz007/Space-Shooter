@@ -23,8 +23,12 @@ public:
         lives--;
     }
 
-    bool isAlive() const {
+    bool hasLives() const {
         return lives>0;
+    }
+
+    int getLives() const {
+        return lives;
     }
 
     void Update() override {
@@ -74,9 +78,9 @@ private:
     static const float VERTICAL_SPEED;
     static const float HORIZONTAL_SPEED;
     static const float SHOT_DELAY;
+    float secondsSincePrevShot;
     static const float HITBOX_WIDTH;
     static const float HITBOX_HEIGHT;
-    float secondsSincePrevShot;
 };
 
 
