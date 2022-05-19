@@ -28,6 +28,8 @@ public:
         return shotByPlayer;
     }
 
+    void die() override;
+
 private:
     bool shotByPlayer;
     float speedX;
@@ -36,6 +38,8 @@ public:
     const static float SPEED_X;
     const static float HITBOX_WIDTH;
     const static float HITBOX_HEIGHT;
+    static const float DYING_TIME;
+    float dyingTime{0};
 };
 
 

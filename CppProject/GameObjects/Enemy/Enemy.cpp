@@ -6,22 +6,32 @@
 #include "../Bullet/Bullet.h"
 #include "../../Screens/ScreenManager.h"
 
+const float Enemy::DYING_TIME = 0.2;
 const float Enemy::SHOT_DELAY = 1;
 const float Enemy::HITBOX_HEIGHT = 60;
 const float Enemy::HITBOX_WIDTH = 90;
 
 void Enemy::Update() {
-    x+=enemyLogic.dx();
-    y+=enemyLogic.dy();
-    secondsSincePrevShot += GetFrameTime();
-    if (secondsSincePrevShot >= SHOT_DELAY){
-        secondsSincePrevShot = 0;
-        shot();
+    if (!_isDying){
+        x+=enemyLogic.dx();
+        y+=enemyLogic.dy();
+        secondsSincePrevShot += GetFrameTime();
+        if (secondsSincePrevShot >= SHOT_DELAY){
+            secondsSincePrevShot = 0;
+            shot();
+        }
+    } else {
+        dyingTime += GetFrameTime();
+        if (dyingTime >= DYING_TIME)
+            _isDead = true;
     }
 }
 
 void Enemy::Draw() {
-    DrawRectangle(x, y, width, height, RED);
+    if (!_isDying)
+        DrawRectangle(x, y, width, height, RED);
+    else
+        DrawRectangle(x, y, width, height, BLUE);
 }
 
 void Enemy::shot() {
@@ -34,6 +44,7 @@ void Enemy::shot() {
 }
 
 void Enemy::die() {
-    GameObject::die();
+    _isCollidable = false;
+    _isDying = true;
     musicPlayer->playSound(SoundEnum::ENEMY_HIT);
 }

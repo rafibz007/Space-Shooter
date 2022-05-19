@@ -34,6 +34,8 @@ public:
 private:
     EnemyLogic enemyLogic;
     static const float SHOT_DELAY;
+    static const float DYING_TIME;
+    float dyingTime{0};
     float secondsSincePrevShot;
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
 };

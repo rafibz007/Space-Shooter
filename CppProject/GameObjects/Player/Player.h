@@ -38,9 +38,7 @@ public:
 
     void Update() override;
 
-    void Draw() override {
-        DrawRectangle(x, y, width, height, GREEN);
-    };
+    void Draw() override;
 
 private:
     void shot();
@@ -56,6 +54,8 @@ private:
     float secondsSincePrevShot;
     static const float HITBOX_WIDTH;
     static const float HITBOX_HEIGHT;
+    static const float DYING_TIME;
+    float dyingTime{0};
 };
 
 
