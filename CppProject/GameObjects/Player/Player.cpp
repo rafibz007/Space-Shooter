@@ -65,7 +65,7 @@ void Player::Update() {
 void Player::die() {
     _isDying = true;
     _isCollidable = false;
-//    musicPlayer->playSound(SoundEnum::PLAYER_EXPLOSION);
+    musicPlayer->playSound(SoundEnum::PLAYER_EXPLOSION);
 }
 
 void Player::Draw() {
