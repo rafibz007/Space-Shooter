@@ -36,12 +36,15 @@ private:
     EnemyLogic enemyLogic;
     static const float SHOT_DELAY;
     static const float DYING_TIME;
+    static const int EXPLOSION_FRAMES;
     float dyingTime{0};
     float secondsSincePrevShot{0};
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
     TextureHolder* textureHolder{TextureHolder::GetInstance()};
     Texture2D* texture{textureHolder->getTexture(TextureEnum::ENEMY_SHIP)};
     Vector2 textureSize{TextureEnum::toSize(TextureEnum::ENEMY_SHIP)};
+    Texture2D* explosionTexture{textureHolder->getTexture(TextureEnum::EXPLOSION)};
+    Vector2 explosionTextureSize{TextureEnum::toSize(TextureEnum::EXPLOSION)};
 };
 
 
