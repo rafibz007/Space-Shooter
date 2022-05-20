@@ -7,7 +7,7 @@
 int main()
 {
 //    INITIALIZATION
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "CapitanBombardiero");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Space Shooter");
     InitAudioDevice();
     SetMasterVolume(100);
 
@@ -35,7 +35,7 @@ int main()
 
         ClearBackground(RAYWHITE);
         screenManager->Draw();
-        DrawFPS(10, 10);
+//        DrawFPS(10, 10);
 
         EndDrawing();
     }
