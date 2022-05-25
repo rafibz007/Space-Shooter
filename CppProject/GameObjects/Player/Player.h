@@ -21,7 +21,7 @@ public:
         lives{MAX_LIVES}{}
 
     void receiveDamage(){
-        lives--;
+        lives = std::max(lives-1, 0);
         musicPlayer->playSound(SoundEnum::PLAYER_HIT);
     }
 
