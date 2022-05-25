@@ -24,11 +24,9 @@ void Bullet::Draw() {
     float yDiff = textureSize.y - HITBOX_HEIGHT;
     if (!_isDying){
 
-//        DrawRectangle(x,y,width,height,PURPLE);
         DrawTextureRec(*texture, Rectangle{0, 0, textureSize.x/2, textureSize.y}, Vector2{static_cast<float>(x)-xDiff/2,static_cast<float>(y)-yDiff/2}, WHITE);
     } else {
 
-//        DrawRectangle(x,y,width,height,PURPLE);
         DrawTextureRec(*texture, Rectangle{textureSize.x/2, 0, textureSize.x/2, textureSize.y}, Vector2{static_cast<float>(x)-xDiff/2,static_cast<float>(y)-yDiff/2}, WHITE);
     }
 }

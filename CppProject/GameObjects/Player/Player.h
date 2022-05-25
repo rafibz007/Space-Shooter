@@ -16,9 +16,9 @@
 
 class Player: public GameObject {
 public:
-    explicit Player(int _lives=3):
+    explicit Player():
         GameObject(10, (GetScreenHeight()-HITBOX_HEIGHT)/2, HITBOX_WIDTH, HITBOX_HEIGHT, true),
-        lives{_lives}{}
+        lives{MAX_LIVES}{}
 
     void receiveDamage(){
         lives--;
@@ -51,6 +51,8 @@ private:
     static const float HITBOX_HEIGHT;
     static const float DYING_TIME;
     static const int EXPLOSION_FRAMES;
+    static const int MAX_LIVES;
+    static const int LIVE_FRAMES;
 
     int lives;
     float dyingTime{0};

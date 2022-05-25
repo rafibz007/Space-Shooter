@@ -36,27 +36,24 @@ void Enemy::Draw() {
     float yDiff = textureSize.y - HITBOX_HEIGHT;
 
     if (!_isDying){
-
-//        DrawRectangle(x, y, width, height, RED);
         DrawTexture(*texture, x-xDiff/2, y-yDiff/2, WHITE);
     } else {
-//        DrawRectangle(x, y, width, height, BLUE);
         int explosionFrame = std::floor((EXPLOSION_FRAMES+1)*(dyingTime/DYING_TIME));
         if (explosionFrame <= 4)
             DrawTexture(*texture, x-xDiff/2, y-yDiff/2, WHITE);
 
-        float xExplosionDiff = explosionTextureSize.x/8 - HITBOX_WIDTH;
+        float xExplosionDiff = explosionTextureSize.x/EXPLOSION_FRAMES - HITBOX_WIDTH;
         float yExplosionDiff = explosionTextureSize.y - HITBOX_HEIGHT;
 
         DrawTextureRec(*explosionTexture,
-                       Rectangle{(explosionTextureSize.x/8)*(float)explosionFrame,0,explosionTextureSize.x/8, explosionTextureSize.y},
+                       Rectangle{(explosionTextureSize.x/EXPLOSION_FRAMES)*(float)explosionFrame,0,explosionTextureSize.x/EXPLOSION_FRAMES, explosionTextureSize.y},
                        Vector2{static_cast<float>(x-xExplosionDiff/2), static_cast<float>(y-yExplosionDiff/2)},
                        WHITE);
     }
 }
 
 void Enemy::shot() {
-    auto* bullet = new Bullet(x-30, y+height/2-Bullet::HITBOX_HEIGHT, false, -Bullet::SPEED_X);
+    auto* bullet = new Bullet(x-30, y+height/2-Bullet::HITBOX_HEIGHT/2, false, -Bullet::SPEED_X);
     Game* game = ScreenManager::GetInstance()->getGame();
     if (game != nullptr){
         game->addBullet(bullet);

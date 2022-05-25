@@ -14,9 +14,11 @@ float const Player::HITBOX_WIDTH = 60;
 float const Player::SHOT_DELAY = 0.5;
 float const Player::DYING_TIME = 1;
 int const Player::EXPLOSION_FRAMES = 8;
+int const Player::MAX_LIVES = 3;
+int const Player::LIVE_FRAMES = 3;
 
 void Player::shot() {
-    auto* bullet = new Bullet(x+width, y+height/2-Bullet::HITBOX_HEIGHT, true);
+    auto* bullet = new Bullet(x+width, y+height/2-Bullet::HITBOX_HEIGHT/2, true);
     Game* game = ScreenManager::GetInstance()->getGame();
     if (game != nullptr) {
         game->addBullet(bullet);
@@ -71,26 +73,32 @@ void Player::die() {
 }
 
 void Player::Draw() {
-    float xDiff = textureSize.x - HITBOX_WIDTH;
+    float xDiff = textureSize.x/LIVE_FRAMES - HITBOX_WIDTH;
     float yDiff = textureSize.y - HITBOX_HEIGHT;
+    int playerLiveFrame = std::ceil((LIVE_FRAMES-1)*(1-((float)lives/MAX_LIVES)));
+
     if (!_isDying){
 
-//        DrawRectangle(x, y, width, height, PINK);
-        DrawTexture(*texture, x-xDiff/2, y-yDiff/2, WHITE);
+        DrawTextureRec(*texture,
+                       Rectangle{(textureSize.x/LIVE_FRAMES)*(float)playerLiveFrame, 0, textureSize.x/LIVE_FRAMES, textureSize.y},
+                       Vector2{static_cast<float>(x-xDiff/2), static_cast<float>(y-yDiff/2)},
+                       WHITE);
     }
     else
     {
         int explosionFrame = std::floor((EXPLOSION_FRAMES+1)*(dyingTime/DYING_TIME));
         if (explosionFrame <= 4)
-            DrawTexture(*texture, x-xDiff/2, y-yDiff/2, WHITE);
+            DrawTextureRec(*texture,
+                           Rectangle{(textureSize.x/LIVE_FRAMES)*(float)playerLiveFrame, 0, textureSize.x/LIVE_FRAMES, textureSize.y},
+                           Vector2{static_cast<float>(x-xDiff/2), static_cast<float>(y-yDiff/2)},
+                           WHITE);
 
-        float xExplosionDiff = explosionTextureSize.x/8 - HITBOX_WIDTH;
+        float xExplosionDiff = explosionTextureSize.x/EXPLOSION_FRAMES - HITBOX_WIDTH;
         float yExplosionDiff = explosionTextureSize.y - HITBOX_HEIGHT;
 
         DrawTextureRec(*explosionTexture,
-                       Rectangle{(explosionTextureSize.x/8)*(float)explosionFrame,0,explosionTextureSize.x/8, explosionTextureSize.y},
+                       Rectangle{(explosionTextureSize.x/EXPLOSION_FRAMES)*(float)explosionFrame,0,explosionTextureSize.x/EXPLOSION_FRAMES, explosionTextureSize.y},
                        Vector2{static_cast<float>(x-xExplosionDiff/2), static_cast<float>(y-yExplosionDiff/2)},
                        WHITE);
-//        DrawRectangle(x, y, width, height, PINK);
     }
 }
