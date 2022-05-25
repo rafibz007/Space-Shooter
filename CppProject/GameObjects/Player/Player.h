@@ -18,8 +18,7 @@ class Player: public GameObject {
 public:
     explicit Player(int _lives=3):
         GameObject(10, (GetScreenHeight()-HITBOX_HEIGHT)/2, HITBOX_WIDTH, HITBOX_HEIGHT, true),
-        lives{_lives},
-        secondsSincePrevShot{SHOT_DELAY}{}
+        lives{_lives}{}
 
     void receiveDamage(){
         lives--;
@@ -45,22 +44,23 @@ private:
 
 
 private:
+    static const float VERTICAL_SPEED;
+    static const float HORIZONTAL_SPEED;
+    static const float SHOT_DELAY;
+    static const float HITBOX_WIDTH;
+    static const float HITBOX_HEIGHT;
+    static const float DYING_TIME;
+    static const int EXPLOSION_FRAMES;
+
+    int lives;
+    float dyingTime{0};
+    float secondsSincePrevShot{SHOT_DELAY};
     TextureHolder* textureHolder{TextureHolder::GetInstance()};
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
     Texture2D* texture{textureHolder->getTexture(TextureEnum::PLAYER_SHIP)};
     Vector2 textureSize{TextureEnum::toSize(TextureEnum::PLAYER_SHIP)};
     Texture2D* explosionTexture{textureHolder->getTexture(TextureEnum::EXPLOSION)};
     Vector2 explosionTextureSize{TextureEnum::toSize(TextureEnum::EXPLOSION)};
-    int lives;
-    static const float VERTICAL_SPEED;
-    static const float HORIZONTAL_SPEED;
-    static const float SHOT_DELAY;
-    float secondsSincePrevShot;
-    static const float HITBOX_WIDTH;
-    static const float HITBOX_HEIGHT;
-    static const float DYING_TIME;
-    static const int EXPLOSION_FRAMES;
-    float dyingTime{0};
 };
 
 

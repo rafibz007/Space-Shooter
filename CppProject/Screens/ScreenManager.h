@@ -21,7 +21,7 @@ public:
     };
 
 protected:
-    ScreenManager():currentScreen{nullptr}, currentScreenEnum{} {}
+    ScreenManager():currentScreen{nullptr}, currentScreenEnum{}, musicPlayer{MusicPlayer::GetInstance()} {}
     static ScreenManager* screenManager;
 
 public:
@@ -52,7 +52,7 @@ public:
 private:
     Screen* currentScreen;
     ScreenEnum currentScreenEnum;
-    MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};
+    MusicPlayer* musicPlayer;
 };
 
 

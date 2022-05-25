@@ -7,6 +7,7 @@
 #include "../Bullet/Bullet.h"
 #include "../../Screens/ScreenManager.h"
 
+int Enemy::objectsAmount = 0;
 const float Enemy::DYING_TIME = 0.2;
 const float Enemy::SHOT_DELAY = 1;
 const float Enemy::HITBOX_HEIGHT = 60;
@@ -20,7 +21,8 @@ void Enemy::Update() {
         secondsSincePrevShot += GetFrameTime();
         if (secondsSincePrevShot >= SHOT_DELAY){
             secondsSincePrevShot = 0;
-            shot();
+            if (enemyLogic.willShoot())
+                shot();
         }
     } else {
         dyingTime += GetFrameTime();

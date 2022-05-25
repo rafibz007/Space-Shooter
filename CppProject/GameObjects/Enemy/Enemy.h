@@ -14,7 +14,16 @@
 class Enemy: public GameObject {
 public:
     Enemy(float _x, float _y, const EnemyLogic& _enemyLogic):
-        GameObject(_x,_y,HITBOX_WIDTH,HITBOX_HEIGHT, true), enemyLogic{_enemyLogic}{}
+        GameObject(_x,_y,HITBOX_WIDTH,HITBOX_HEIGHT, true), enemyLogic{_enemyLogic}{
+        objectsAmount++;
+    }
+    ~Enemy(){
+        objectsAmount--;
+    }
+
+    static int getAmount(){
+        return objectsAmount;
+    }
 
     void Update() override;
     void Draw() override;
@@ -25,6 +34,7 @@ public:
 
     void die() override;
 
+
 private:
     void shot();
 
@@ -33,10 +43,12 @@ public:
     static const float HITBOX_HEIGHT;
 
 private:
-    EnemyLogic enemyLogic;
     static const float SHOT_DELAY;
     static const float DYING_TIME;
     static const int EXPLOSION_FRAMES;
+
+    EnemyLogic enemyLogic;
+    static int objectsAmount;
     float dyingTime{0};
     float secondsSincePrevShot{0};
     MusicPlayer* musicPlayer{MusicPlayer::GetInstance()};

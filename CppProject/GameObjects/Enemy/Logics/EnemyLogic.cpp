@@ -19,5 +19,5 @@ float EnemyLogic::dy() {
 }
 
 bool EnemyLogic::willShoot() {
-    return false;
+    return true;
 }

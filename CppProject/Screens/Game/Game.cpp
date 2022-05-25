@@ -88,7 +88,6 @@ void Game::Update() {
     }
 
     for (auto marketEnemy : markedToDeleteEnemies) {
-        enemySpawner.notifyEnemyDeath();
         enemies.erase(marketEnemy);
         delete marketEnemy;
     }

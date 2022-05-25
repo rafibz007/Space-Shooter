@@ -15,7 +15,7 @@
 
 class Game: public Screen {
 public:
-    Game(): player{Player()}, enemies{}, bullets{}, enemySpawner{EnemySpawner()}{
+    Game(): player{Player()}, enemySpawner{EnemySpawner()}, score{0}{
         backgroundObjects.push_back(
                 new BackgroundObject(textureHolder->getTexture(TextureEnum::BACKGROUND))
                 );
@@ -42,14 +42,16 @@ public:
     }
 
 private:
-    std::unordered_set<Enemy*> enemies;
+    static int ENEMY_SCORE_VALUE;
+
+    std::unordered_set<Enemy*> enemies{};
     std::unordered_set<Enemy*> markedToDeleteEnemies{};
-    std::unordered_set<Bullet*> bullets;
+    std::unordered_set<Bullet*> bullets{};
     std::unordered_set<Bullet*> markedToDeleteBullets{};
     EnemySpawner enemySpawner;
     Player player;
-    int score{0};
-    static int ENEMY_SCORE_VALUE;
+    int score;
+
 };
 
 

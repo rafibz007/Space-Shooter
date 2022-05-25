@@ -16,7 +16,7 @@ float EnemySpawner::MIN_SPAWN_DELAY = 0.5;
 
 void EnemySpawner::Update() {
     timeSincePrevSpawn += GetFrameTime();
-    if (timeSincePrevSpawn >= SPAWN_DELAY && enemiesAmount < MAX_ENEMIES_AMOUNT){
+    if (timeSincePrevSpawn >= SPAWN_DELAY && Enemy::getAmount() < MAX_ENEMIES_AMOUNT){
         spawnEnemy();
 
 //        modify next spawn time
@@ -39,7 +39,6 @@ void EnemySpawner::spawnEnemy() {
     auto* game = ScreenManager::GetInstance()->getGame();
     if (game != nullptr){
         game->addEnemy(enemy);
-        enemiesAmount++;
         timeSincePrevSpawn = 0;
     }
 }

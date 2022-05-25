@@ -20,10 +20,11 @@ public:
         _isCollidable = false;
         _isDead = true;
     }
+
 protected:
-    bool _isDying;
+    bool _isDying; //to allow waiting until dead animation is over before removing object
     bool _isCollidable; //to allow playing dead animation but not having collision
-    bool _isDead; //to allow waiting until dead animation is over before removing object
+    bool _isDead;
 };
 
 
