@@ -6,8 +6,8 @@
 
 const char *MusicEnum::toString(MusicEnum::ENUM anEnum) {
     switch (anEnum) {
-        case MENU: return "";
-        case GAME: return "";
+        case MENU: return "../Music/menu.mp3";
+        case GAME: return "../Music/game.mp3";
     }
     return "";
 }
@@ -15,7 +15,7 @@ const char *MusicEnum::toString(MusicEnum::ENUM anEnum) {
 float MusicEnum::toVolume(MusicEnum::ENUM anEnum) {
     switch (anEnum) {
         case MENU: return 0.3;
-        case GAME: return 0.2;
+        case GAME: return 0.15;
     }
     return 0;
 }

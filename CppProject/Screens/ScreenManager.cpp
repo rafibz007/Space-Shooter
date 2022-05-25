@@ -17,6 +17,7 @@ void ScreenManager::showGame() {
     delete currentScreen;
     currentScreenEnum = ScreenEnum::GAME;
     currentScreen = new Game();
+    musicPlayer->playMusic(MusicEnum::GAME);
     musicPlayer->playSound(SoundEnum::GAME_START);
 }
 
@@ -26,6 +27,7 @@ void ScreenManager::showMenu() {
     delete currentScreen;
     currentScreenEnum = ScreenEnum::MENU;
     currentScreen = new MenuScreen();
+    musicPlayer->playMusic(MusicEnum::MENU);
 }
 
 void ScreenManager::showEndGame(int finalScore) {
@@ -35,6 +37,7 @@ void ScreenManager::showEndGame(int finalScore) {
     currentScreenEnum = ScreenEnum::END;
     currentScreen = new EndGameScreen(finalScore);
     musicPlayer->playSound(SoundEnum::GAME_OVER);
+    musicPlayer->stopMusic();
 }
 
 Game *ScreenManager::getGame() {

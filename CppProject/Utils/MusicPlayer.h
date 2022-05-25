@@ -24,12 +24,15 @@ public:
 
     static MusicPlayer* GetInstance();
 
+    void stopMusic();
     void playMusic(MusicEnum::ENUM);
     void playSound(SoundEnum::ENUM);
+    void Update();
 
 private:
     std::map<SoundEnum::ENUM, Sound*> toSoundMap{};
     std::map<MusicEnum::ENUM, Music*> toMusicMap{};
+    Music* currentMusicPlaying{nullptr};
 };
 
 

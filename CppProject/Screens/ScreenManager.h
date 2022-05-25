@@ -33,6 +33,7 @@ public:
 
     void Update() override{
         currentScreen->Update();
+        musicPlayer->Update();
     }
 
     void Draw() override {

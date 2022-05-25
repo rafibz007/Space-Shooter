@@ -33,6 +33,8 @@ void MusicPlayer::playMusic(MusicEnum::ENUM musicEnum) {
         music = searchedMusic->second;
     }
 
+    stopMusic();
+    currentMusicPlaying = music;
     PlayMusicStream(*music);
 }
 
@@ -49,5 +51,20 @@ void MusicPlayer::playSound(SoundEnum::ENUM soundEnum) {
     }
 
     PlaySoundMulti(*sound);
+}
+
+void MusicPlayer::stopMusic() {
+    if (currentMusicPlaying == nullptr)
+        return;
+
+    StopMusicStream(*currentMusicPlaying);
+    currentMusicPlaying = nullptr;
+}
+
+void MusicPlayer::Update() {
+    if (currentMusicPlaying == nullptr)
+        return;
+
+    UpdateMusicStream(*currentMusicPlaying);
 }
 
