@@ -23,7 +23,7 @@ private:
     static float MAX_SPAWN_DELAY;
     static float SPAWN_DELAY;
 
-    double timeSincePrevSpawn{1};
+    double timeSincePrevSpawn{0};
 };
 
 
