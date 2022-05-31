@@ -9,5 +9,11 @@ Rules are simple:
   - avoid enemy ships and their leser shots in order to survice
   - earn highest score as you can!
 
+## How to run
+In console: 
+```
+make run
+```
+
 ## Overview
 https://user-images.githubusercontent.com/92322072/171184373-d0cd6278-0166-42bf-89e5-4b50f37154d1.mp4
